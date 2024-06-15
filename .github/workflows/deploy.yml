@@ -41,8 +41,9 @@ jobs:
           echo "<body>" >> index.html
           echo "<h1>TurboWarp Extensions</h1>" >> index.html
           echo "<ul>" >> index.html
-          for file in $(find . -maxdepth 1 -type d -not -path '*/\.*' -exec basename {} \;); do
-            echo "<li><a href=\"${file}/\">${file}</a></li>" >> index.html
+          # List directories and generate HTML links
+          for dir in $(find * -type d -maxdepth 0 -not -path '.*'); do
+            echo "<li><a href=\"${dir}/\">${dir}</a></li>" >> index.html
           done
           echo "</ul>" >> index.html
           echo "</body>" >> index.html
